@@ -1,4 +1,4 @@
-Clone using HTTP URL to your IntelliJ and run the app: https://github.com/thanuraj/LoanEMICalculatorApplication.git
+NOTE: Clone using HTTP URL to your IntelliJ and run the app: https://github.com/thanuraj/LoanEMICalculatorApplication.git
 
 1.Loan EMI Calculator – Spring Boot (WebFlux, Java 17)
 This project is a reactive Spring Boot WebFlux application that exposes an API to calculate the Equated Monthly Installment (EMI) for a loan based on:
