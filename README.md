@@ -16,7 +16,7 @@ Reactor Core (Mono)
 Lombok
 Maven
 
-* Spring security is not used to secure the endpoints.
+* Spring security is used to secure the endpoints. For now it'll allow all URL patterns. In Futue we can add authentocation like JWT, Oauth etc.
 
 3.Running the Project
 * Build the application
