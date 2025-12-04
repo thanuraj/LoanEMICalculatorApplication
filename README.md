@@ -35,7 +35,7 @@ Request Body Example
     {
     "loanAmount": 500000,
     "yearlyInterestRate": 12,
-    "loanTermMonths": 60
+    "loanTermMonths": 30
     }
 
 Response Example
@@ -46,4 +46,4 @@ Response Example
 5.Testing via cURL
 curl -X POST http://localhost:8080/api/loan/emi \
 -H "Content-Type: application/json" \
--d '{"loanAmount":500000,"yearlyInterestRate":12,"loanTermMonths":60}'
+-d '{"loanAmount":500000,"yearlyInterestRate":12,"loanTermMonths":30}'

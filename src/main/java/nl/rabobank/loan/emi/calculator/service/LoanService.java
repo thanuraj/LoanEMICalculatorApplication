@@ -12,17 +12,28 @@ import reactor.core.publisher.Mono;
 public class LoanService {
 
     public Mono<LoanResponse> calculateEmi(LoanRequest request) {
-        log.info("Calculating emi!!!");
-        return Mono.fromSupplier(() -> {
-            double emi = computeEmi(
-                    request.getLoanAmount(),
-                    request.getYearlyInterestRate(),
-                    request.getLoanTermMonths()
-            );
+        log.info("Calculating EMI...");
 
-            return new LoanResponse(emi);
-        });
+        return Mono.fromSupplier(() -> {
+                    try {
+                        double emi = computeEmi(
+                                request.getLoanAmount(),
+                                request.getYearlyInterestRate(),
+                                request.getLoanTermMonths()
+                        );
+
+                        return new LoanResponse(emi);
+                    } catch (Exception ex) {
+                        log.error("Error calculating EMI", ex);
+                        throw new RuntimeException("Failed to calculate EMI: " + ex.getMessage(), ex);
+                    }
+                })
+                .onErrorResume(ex -> {
+                    log.error("Handling EMI calculation error: {}", ex.getMessage());
+                    return Mono.error(new RuntimeException("Could not calculate EMI. Check input values."));
+                });
     }
+
 
     /**
      * Computes EMI using standard EMI formula
