@@ -31,9 +31,9 @@ class LoanControllerTest {
                 .thenReturn(Mono.just(new LoanResponse(1234.56)));
 
         LoanRequest request = new LoanRequest();
-        request.setLoanAmount(500000.0);
-        request.setYearlyInterestRate(12.0);
-        request.setLoanTermMonths(60);
+        request.setLoanAmount(500000.0);   // valid
+        request.setYearlyInterestRate(12.0); // valid (<= 100)
+        request.setLoanTermMonths(12);
 
         webTestClient.post()
                 .uri("/api/loan/emi")
